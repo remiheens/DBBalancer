@@ -1,5 +1,5 @@
 {
-	"name": "remiheens/DBBalancer",
+	"name": "remiheens/dbbalancer",
 	"version": "0.1-alpha",
     "type": "library",
     "description": "Library to manage multi-databases",
