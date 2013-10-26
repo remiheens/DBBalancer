@@ -2,10 +2,17 @@
 
 namespace DBBalancer;
 
+/**
+ * Library to manage multi databases
+ * @author remiheens
+ */
 class DBBalancer {
-	
+
 	private $servers;
 
+	/**
+	 * @param array $server array of DBServer instance
+	 */
 	public function __construct($servers = array())
 	{
 		$this->servers = array(
@@ -36,21 +43,39 @@ class DBBalancer {
 		}
 	}
 
+	/**
+	 *
+	 * @param DBBalancer\DBServer $server server for read query
+	 * @return boolean 
+	 */
 	public function addReadServer(DBServer $server)
 	{
 		return $this->_addServer($server, 'read');
 	}
 
+	/**
+	 *
+	 * @param DBBalancer\DBServer $server server for write query
+	 * @return boolean 
+	 */
 	public function addWriteServer(DBServer $server)
 	{
 		return $this->_addServer($server, 'write');
 	}
 
+	/**
+	 *
+	 * @return DBBalancer\DBServer $server server for read query
+	 */
 	public function pickRead()
 	{
 		return $this->_pick('read');
 	}
 
+	/**
+	 *
+	 * @return DBBalancer\DBServer $server server for write query
+	 */
 	public function pickWrite()
 	{
 		return $this->_pick('write');
